@@ -1,0 +1,29 @@
+from turtle import Turtle
+class Scoreboard(Turtle):
+    def __init__(self, xcor, ycor, player):
+        super().__init__()
+        self.player= player
+        self.xcor=xcor
+        self.ycor=ycor
+        self.color("white")
+        self.score = 0
+        self.penup()
+        self.goto(xcor, ycor)
+        self.write(f"Player{self.player}: {self.score}", align="center", font=("Arial", 20, "bold"))
+        self.hideturtle()
+
+    def add_score(self):
+        self.clear()
+        self.score += 1
+        self.color("white")
+        self.penup()
+        self.goto(self.xcor, self.ycor)
+        self.write(f"Player{self.player}: {self.score}", align="center", font=("Arial", 20, "bold"))
+        self.hideturtle()
+
+    def declare_winner(self, winner):
+        self.color("red")
+        self.penup()
+        self.goto(0,0)
+        self.write(f"Game Over! The Winner is {winner}", align="center", font=("Arial", 20, "bold"))
+        self.hideturtle()
